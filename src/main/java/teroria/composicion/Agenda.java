@@ -25,16 +25,46 @@ public class Agenda {
     public List<Contacto> obtenerTodosContactos() {
         return contactos;
     }
-
-
     //devuelva el nombre del contacto, pasodo el teléfono
-    //devuelva el teléfono dado el nombre del contact00o
+    public String obtenerNombreContactoPorTelefono(String numeroTelefono) {
+        for (Contacto contacto : contactos)
+            if (contacto.getNumeroTelefono().equals(numeroTelefono))
+                return contacto.getNombreContacto();
+        return null;
+    }
+    //devuelva el teléfono dado el nombre del contacto
+    public String obtenerNumeroTelefonoContactoPorNombre(String nombre) {
+        for (Contacto contacto : contactos)
+            if (contacto.getNombreContacto().equalsIgnoreCase(nombre))
+                return contacto.getNumeroTelefono();
+        return null;
+    }
     //actualizamos el número de teléfono
+    public void actualizarTelefonoContacto(String nombreContacto, String nuevoTelefono) {
+        for (Contacto contacto : contactos)
+            if (contacto.getNombreContacto().equalsIgnoreCase(nombreContacto))
+                contacto.setNumeroTelefono(nuevoTelefono);
+    }
     //borrar el contacto
+    public void eliminarContactoPorTelefono(Contacto contacto) {
+        contactos.remove(contacto);
+    }
 
-
-
-
-
-
+    @Override
+    public String toString() {
+        StringBuilder sBuilder = new StringBuilder();
+        sBuilder.append("AGENDA: ").append(nombreAgenda).append('\n');
+        for (int i = 0; i < contactos.size(); i++) {
+            sBuilder.append(i+1).append(".- ").append(contactos.get(i).getNombreContacto()).
+                    append(": ").append(contactos.get(i).getNumeroTelefono()).append('\n');
+        }
+        return sBuilder.toString();
+    }
 }
+
+
+
+
+
+
+

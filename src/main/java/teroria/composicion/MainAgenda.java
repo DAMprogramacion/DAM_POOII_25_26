@@ -14,5 +14,18 @@ public class MainAgenda {
         agenda.insertarContacto(contacto3);
         agenda.insertarContacto(contacto4);
         System.out.println(agenda.obtenerTodosContactos());
+        String numeroTelefono = "123456789";
+        String nombreContacto = agenda.obtenerNombreContactoPorTelefono(numeroTelefono);
+        System.out.printf("Al nº telefono %s le corresponde el nombre de %s%n",
+                numeroTelefono, nombreContacto);
+        System.out.printf("Al nombre %s le corresponde el telefono de %s%n",
+                nombreContacto, agenda.obtenerNumeroTelefonoContactoPorNombre(nombreContacto));
+        agenda.actualizarTelefonoContacto("Juan", "000000000");
+        agenda.obtenerTodosContactos().forEach(System.out::println);
+        agenda.eliminarContactoPorTelefono(contacto1);
+        System.out.println("Borrado el contacto de juan");
+        agenda.obtenerTodosContactos().forEach(System.out::println);
+        System.out.println(agenda);
+
     }
 }
