@@ -1,4 +1,4 @@
-package teroria.composicion;
+package teroria.composicion.ejercicioAgenda;
 
 public class MainAgenda {
     public static void main(String[] args) {

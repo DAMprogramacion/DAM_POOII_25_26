@@ -1,4 +1,4 @@
-package teroria.composicion;
+package teroria.composicion.ejercicioAgenda;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package teroria.composicion;
+package teroria.composicion.ejercicioAgenda;
 
 
 import java.util.ArrayList;
