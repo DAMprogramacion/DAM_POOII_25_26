@@ -2,12 +2,13 @@ package teroria.composicion.ejercicioClaseInformatica;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Objects;
 
 public class Estudiante {
     private String nombreEstudiante;
     private String apellidosEstudiante;
     private LocalDate fechaNacimiento;
-    private String dni;
+    private final String dni; //una vez inicializado el valor, no puede cambiar
     private Grupo grupo;
 
     public Estudiante(String nombreEstudiante, String apellidosEstudiante, LocalDate fechaNacimiento, String dni, Grupo grupo) {
@@ -57,10 +58,15 @@ public class Estudiante {
     public void setGrupo(Grupo grupo) {
         this.grupo = grupo;
     }
-    private boolean esMayorEdad() {
+    public boolean esMayorEdad() {
         return Period.between(fechaNacimiento, LocalDate.now()).getYears() >= 18;
     }
+    public boolean esCumpleannosHoy () {
+        LocalDate hoy = LocalDate.now();
+        return hoy.getDayOfMonth() == fechaNacimiento.getDayOfMonth() &&
+                hoy.getMonthValue() == fechaNacimiento.getMonthValue();
 
+    }
     @Override
     public String toString() {
         String mensaje = esMayorEdad() ? "mayor de edad" : "menor edad";
@@ -71,5 +77,17 @@ public class Estudiante {
         stringBuilder.append(", ").append(mensaje);
 
         return stringBuilder.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Estudiante that = (Estudiante) o;
+        return Objects.equals(dni, that.dni);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(dni);
     }
 }
