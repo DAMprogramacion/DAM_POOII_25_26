@@ -1,6 +1,8 @@
 package ejercicios;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AulaInformatica {
@@ -34,7 +36,7 @@ public class AulaInformatica {
         ordenadores.remove(idOrdenador);
     }
     //cambiar a lista por si hay mas de un ordenador con mas RAM
-    public Ordenador getOrdenadorMayorRAM () {
+    /*public Ordenador getOrdenadorMayorRAM () {
         Ordenador ordenadorMayorRAM = null;
         int ramMayor = 0;
         for (Ordenador ordenador : ordenadores.values()){
@@ -44,11 +46,44 @@ public class AulaInformatica {
             }
         }
         return ordenadorMayorRAM;
+    }*/
+    public List<Ordenador> getOrdenadoresMayorRAM () {
+        List<Ordenador> ordenadoresMayorRAM = new ArrayList<>();
+        int ramMayor = 0;
+        for (Ordenador ordenador : ordenadores.values()){
+            if (ordenador.getRam() > ramMayor) {
+                ramMayor = ordenador.getRam();
+                ordenadoresMayorRAM.clear();
+                ordenadoresMayorRAM.add(ordenador);
+            } else if (ordenador.getRam() == ramMayor)
+                ordenadoresMayorRAM.add(ordenador);
+        }
+        return ordenadoresMayorRAM;
     }
     //CRUD:
     //METODO DADO LA id DEVUELVA MUESTRE EN CONSOLA LAS CARACTERÍSTICAS DEL ORDENADOR: RAM: ...
+    public void mostrarDatosOrdenador (String idOrd) {
+        Ordenador ordenador = ordenadores.get(idOrd);
+        if (ordenador != null) {
+            System.out.printf("Mostrando datos del ordenador %s%n", idOrd);
+            System.out.printf("RAM %d%n", ordenador.getRam());
+            System.out.printf("Capacidad disco %d%n", ordenador.getCapacidadDisco());
+            System.out.printf("Procesador %.2f%n", ordenador.getProcesador());
+            System.out.printf("Gráfica integrada %B%n", ordenador.isGraficaIntegrada());
+            System.out.printf("Año de adquisición %d%n", ordenador.getFechaAdquisicion().getYear());
+        } else
+            System.out.printf("El ordenador %s no existe%n", idOrd);
+    }
     //METODO ACTUALIZAR EL ORDENADOR
-    //public void actualizarOrdenador(Ordenador ordenador)
+    public void actualizarOrdenador(Ordenador ordenadorActualizado) {
+        Ordenador ordenador = ordenadores.get(ordenadorActualizado.getId());
+        if (ordenador != null) {
+            ordenador.setRam(ordenadorActualizado.getRam());
+            ordenador.setCapacidadDisco(ordenadorActualizado.getCapacidadDisco());
+            ordenador.setProcesador(ordenadorActualizado.getProcesador());
+            ordenador.setGraficaIntegrada(ordenador.isGraficaIntegrada());
+        }
+    }
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
