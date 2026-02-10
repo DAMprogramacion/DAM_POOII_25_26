@@ -35,7 +35,7 @@ public class MainVentanas {
                     System.out.println("llamamos a un método que actualice");
                     break;
                 case 3:
-                    System.out.println("llamamos a un método que liste");
+                    listarOrdenadores();
                     break;
                 case 4:
                     return;
@@ -45,6 +45,12 @@ public class MainVentanas {
             }
         }
 
+    }
+
+    private static void listarOrdenadores() {
+        JOptionPane.showMessageDialog(
+                null,
+                aulaInformatica.toString());
     }
 
     private static String getDialog(String mensaje, String titulo) {
