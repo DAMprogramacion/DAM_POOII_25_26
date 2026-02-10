@@ -1,5 +1,7 @@
 package ejercicios;
 
+import java.util.Collections;
+
 public class Main {
     public static void main(String[] args) {
         Ordenador ordenador1 =
@@ -37,6 +39,7 @@ public class Main {
         Ordenador ordenadorActualizado = new Ordenador("ID-001", 64, 3.6, false, 10 );
         aulaInformatica.actualizarOrdenador(ordenadorActualizado);
         aulaInformatica.mostrarDatosOrdenador("ID-001");
+
 
     }
 }

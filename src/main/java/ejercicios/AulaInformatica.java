@@ -1,9 +1,6 @@
 package ejercicios;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AulaInformatica {
     private String nombreAula;
@@ -92,4 +89,5 @@ public class AulaInformatica {
         }
         return stringBuilder.toString();  //hay que quitar el último salto de línea
     }
+
 }
