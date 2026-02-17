@@ -1,6 +1,7 @@
 package mockExamen;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class MainEventos {
     public static void main(String[] args) {
@@ -17,6 +18,8 @@ public class MainEventos {
         eventosAnuales.addEvento(eventoFutbol);
         eventosAnuales.addEvento(new Evento("ajedrez", 100, TipoEvento.JUEGO_MESA,
                 LocalDate.of(2027, 2, 28)));
+        List<Evento> eventosCarrera = eventosAnuales.getEventoPorTipo(TipoEvento.CARRERA);
+        System.out.println(eventosCarrera);
 
 
     }

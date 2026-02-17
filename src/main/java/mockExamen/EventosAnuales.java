@@ -21,6 +21,8 @@ public class EventosAnuales {
         return duracionTotal;
     }
     public Evento getEventoMasReciente () {
+        if (eventos.isEmpty() || eventos == null)
+            return null;
         Evento eventoMasReciente = new Evento(null, 0, TipoEvento.CARRERA,
                 LocalDate.of(annoEventos - 1, 1, 1));
         for (Evento evento : eventos)
@@ -35,10 +37,10 @@ public class EventosAnuales {
                 eventosMasUnaHora.add(evento);
         return eventosMasUnaHora;
     }
-    public String[] observacionDeEvento (Evento eventoObserv) {
+    public String[] observacionDeEvento (String nombreEvento) {
         String[] observacionesArray = null;
         for (Evento evento : eventos) {
-            if (evento.getNombreEvento().equalsIgnoreCase(eventoObserv.getNombreEvento())) {
+            if (evento.getNombreEvento().equalsIgnoreCase(nombreEvento)) {
                 List<String> listaObservaciones = evento.getObservaciones();
                 observacionesArray = new String[listaObservaciones.size()];
                 for (int i = 0; i < observacionesArray.length; i++)
@@ -46,9 +48,22 @@ public class EventosAnuales {
             }
         }
         return observacionesArray;
-
-        //return (String[]) evento.getObservaciones().toArray();
     }
+    public List<Evento> getEventoPorTipo (TipoEvento tipoEvento) {
+        List<Evento> eventosPorTipo = new ArrayList<>();
+        for (Evento evento : eventos)
+            if (evento.getTipoEvento().equals(tipoEvento))
+                eventosPorTipo.add(evento);
+        return eventosPorTipo;
+    }
+    public List<Evento> getEventoPorFecha (LocalDate fechaEvento) {
+        List<Evento> eventosPorFecha = new ArrayList<>();
+        for (Evento evento : eventos)
+            if (evento.getFechaEvento().equals(fechaEvento))
+                eventosPorFecha.add(evento);
+        return eventosPorFecha;
+    }
+
 
 }
 
